@@ -1,0 +1,77 @@
+<html>
+
+<head>
+
+     {% load static %} 
+
+    <!-- Bootstrap -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+     
+
+    <!-- Styles -->
+    <link href="{% static 'lubesApp/css/gestion.css' %}" rel="stylesheet">
+
+
+</head>
+
+
+
+<body>
+
+    <h1 class="site-heading text-center text-white d-none d-lg-block"> </h1>
+
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'Home' %}">Gestión de Pedidos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item {% if resques.path == '/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Home' %}">Inicio</a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Servicios' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Servicios' %}">AMFE</a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Tienda' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Biblioteca' %}">Procedimientos</a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Tienda' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Tienda' %}">Registros Activos</a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Contacto' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Contacto' %}">Fichas de Producto </a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Blog' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Blog' %}">Anomalias</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Bootstrap -->
+  <script src="{% static 'lubesApp/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lubesApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+
+    <!-- Contenido que cambia-->
+
+    {% block content %}
+
+    {% endblock %}
+
+  
+
+</html>
