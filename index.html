@@ -1,69 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
+<html>
 
-        {% load static %}
+<head>
 
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+     {% load static %} 
 
-        <link href="{% static 'lubesApp/ccs/Master.css' %}" rel="stylesheet" >
+    <!-- Bootstrap -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-        
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">TOTAL QUALITY SYSTEM - LUBRICANTES AVELLANEDA S.A.U.</a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link active" href="#">Quienes Somos</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link active" href="#">Misión</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link active">Contacto</a>
-                    </li>
-                </ul>
-                </div>
-            </div>
-        </nav>
-    </head>
-
-    <header>
-
-        <!-- This div is  intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
-        <div class="overlay"></div>
-      
-        <!-- The HTML5 video element that will create the background video on the header -->
-        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-          <source src= "{% static 'lubesApp/video/Lubricants.mp4' %}" type="video/mp4">
-        </video>
-       
-                
-      </header>
-      
-      <!-- Page section example for content below the video header -->
-      <section class="my-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 mx-auto">
-              <p>Bajo este sistema podras crear, revisar y actualizar procedimientos, realizar el mantenimiento de los equipos críticos de la planta.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
      
+
+    <!-- Styles -->
+    <link href="{% static 'lubesApp/css/gestion.css' %}" rel="stylesheet">
+
+
+</head>
+
+
+
+<body>
+
+    <h1 class="site-heading text-center text-white d-none d-lg-block"> </h1>
+
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'Home' %}">Gestión de Pedidos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item {% if resques.path == '/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Home' %}">Inicio</a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Servicios' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Servicios' %}">AMFE</a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Tienda' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Biblioteca' %}">Procedimientos</a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Tienda' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Tienda' %}">Registros Activos</a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Contacto' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Contacto' %}">Fichas de Producto </a>
+          </li>
+          <li class="nav-item {% if resques.path == '/Blog' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Blog' %}">Anomalias</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Bootstrap -->
+  <script src="{% static 'lubesApp/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lubesApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+
+    <!-- Contenido que cambia-->
+
+    {% block content %}
+
+    {% endblock %}
+
+  
+
 </html>
