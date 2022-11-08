@@ -1,0 +1,25 @@
+{% extends "lubesApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!-- Masthead-->
+
+<body>
+
+  <div class="container">
+    <form action="{% url 'BibliotecaChange' Procedimiento_Nombre %}" method="POST" enctype="multipart/form-data" style="text-align: center;" > {% csrf_token %}
+
+      <table style="color: white; margin: 50px auto;">
+        {{ form.as_table }}
+      </table>
+      <input  type="submit" class="btn btn-primary" value="Cargar">
+
+    
+    </form>
+  </div>
+</body>
+
+{% endblock %}

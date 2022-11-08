@@ -1,0 +1,89 @@
+{% extends "lubesApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="mt-4">
+    <div class="mb-4">
+      <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+          <a href="{% url 'BibliotecaLoad' %}"  type="button" class="btn btn-success">Crear Nuevo Procedimiento</a> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="containter">
+      <div class="mb-1">
+        <div class="row justify-content-center">
+          
+            <div class="col-xl-6">
+              <form method="get">
+                <div id="custom-search-input">
+                  <div class="input-group col-md-12">
+                    <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value="{{request.GET.buscar}}">
+                    <span class="input-group-list">
+                      <i class="icon incon-search">
+                        <button type="submit" class="btn btn-success">Buscar</button>
+                      </i>
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  {% if vehiculos %}
+
+    <div class="container-fluid">
+      
+        <table class="table table-bordered" style="background-color: white; text-align: center">
+            <thead>
+            <tr>
+                <th scope="col" class="text-center">Nombre del Procedimiento</th>
+                <th scope="col" class="text-center">Código</th>
+                <th scope="col" class="text-center">Versión</th>
+                <th scope="col" class="text-center">Sector</th>
+                <th scope="col" class="text-center">Creación</th>
+                <th scope="col" class="text-center">Prox. Revisión</th>
+                <th scope="col" class="text-center">Tiempo Restante</th>
+                <th scope="col" class="text-center">Estado</th>
+                <th class="text-center" colspan="2">Opciones</th>
+            </tr>
+            </thead>
+            {% for vehiculo in vehiculos %}
+            <tbody>
+            <tr>
+                <td><a href ="{{vehiculo.File.url}}">{{vehiculo.Nombre}}</a></td>
+                <td class="text-center">{{vehiculo.Codigo}}</td>
+                <td class="text-center">{{vehiculo.Version}}</td>
+                <td class="text-center">{{vehiculo.Sector}}</td>
+                <td class="text-center">{{vehiculo.Alta}}</td>
+                <td class="text-center">{{vehiculo.Revision}}</td>
+                <td class="text-center">{{vehiculo.Revision|timeuntil}}</td>
+                <td class="text-center">{{vehiculo.Estado}}</td>
+                <td><a href= "{% url 'BibliotecaChange' vehiculo.Nombre %}" class="btn btn-sm btn-block btn-outline-info">Editar</a></td>
+                <td><a href= "{% url 'BibliotecaDelete' vehiculo.Nombre %}" class="btn btn-sm btn-block btn-outline-danger">Eliminar</a></td>
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+      
+    </div>
+  
+ 
+
+  {% else %}   
+
+    <p class="row justify-content-center" style="color:red">No hay datos con esa descripción.</p>
+
+  {% endif %}
+
+
+{% endblock %}
