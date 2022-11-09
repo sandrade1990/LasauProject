@@ -7,7 +7,7 @@ from lubesApp.forms import Load
 
 
 def home(request):
-    return render(request,"lubesApp/home.html")
+    return render(request,"lubesApp/index.html")
 
 def blog(request):
     return render (request,"lubesApp/blog.html")

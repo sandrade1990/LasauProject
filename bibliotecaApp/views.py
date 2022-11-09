@@ -17,7 +17,7 @@ def biblioteca(request): #busqyeda de objetos en la base.
     if queryset:
         biblioteca = Vehiculo.objects.filter(
             Q(Nombre__icontains = queryset)|
-            Q(Sector__icontains = queryset)
+            Q(Sector__Sector__icontains = queryset)
         ).distinct() 
         return render (request,"bibliotecaApp/biblioteca.html",{"vehiculos":biblioteca})
     else:
